@@ -5,7 +5,7 @@
 #include <SPI.h>
 #include <ssd1331.h>
 
-SPISettings spi_tx(75000000, MSBFIRST, SPI_MODE3);
+SPISettings spi_tx(50000000, MSBFIRST, SPI_MODE3);
 
 volatile bool gfx_writing = false;
 
