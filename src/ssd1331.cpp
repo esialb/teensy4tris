@@ -70,11 +70,11 @@ void SSD1331::write(const uint16_t *buf, size_t len) {
 	while (writing_)
 		yield();
 	writing_ = true;
-	setAddrWindow(0, 0, WIDTH, HEIGHT);
 	memcpy(tx_buf_, buf, len);
-	digitalWrite(dc_, HIGH);
-	spi_->beginTransaction(spi_tx_);
 	digitalWrite(cs_, LOW);
+	setAddrWindow(0, 0, WIDTH, HEIGHT);
+	spi_->beginTransaction(spi_tx_);
+	digitalWrite(dc_, HIGH);
 	spi_->transfer(tx_buf_, nullptr, len, responder_);
 }
 
@@ -85,8 +85,8 @@ void SSD1331::wait() {
 
 void SSD1331::doneWriting(EventResponderRef responder) {
 	SSD1331 *gfx = (SSD1331*) responder.getContext();
-	digitalWrite(gfx->cs_, HIGH);
 	gfx->spi_->endTransaction();
+	digitalWrite(gfx->cs_, HIGH);
 	gfx->writing_ = false;
 }
 
@@ -129,7 +129,6 @@ void SSD1331::setAddrWindow(uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 	}
 
 	digitalWrite(dc_, LOW);
-	digitalWrite(cs_, LOW);
 	spi_->transfer(0x15); // Column addr set
 	spi_->transfer(x1);
 	spi_->transfer(x2);
@@ -137,7 +136,6 @@ void SSD1331::setAddrWindow(uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 	spi_->transfer(0x75); // Column addr set
 	spi_->transfer(y1);
 	spi_->transfer(y2);
-	digitalWrite(cs_, HIGH);
 }
 
 void SSD1331::begin() {
@@ -196,6 +194,8 @@ void SSD1331::begin() {
 	spi_->transfer(SSD1331_CMD_CONTRASTC);  // 0x83
 	spi_->transfer(0x7D);
 	spi_->transfer(SSD1331_CMD_DISPLAYON);  //--turn on oled panel
+
+	setAddrWindow(0, 0, WIDTH, HEIGHT);
 	digitalWrite(cs_, HIGH);
 }
 
