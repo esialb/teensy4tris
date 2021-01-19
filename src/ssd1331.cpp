@@ -202,8 +202,9 @@ void SSD1331::begin() {
 
 /********************************* low level pin initialization */
 
-SSD1331::SSD1331(SPIClass &spi, int dc, int rst, int cs, SPISettings spi_tx) :
-		spi_(&spi), dc_(dc), rst_(rst), cs_(cs), spi_tx_(spi_tx) {
+SSD1331::SSD1331(SPIClass &spi, int dc, int rst, int cs, SPISettings spi_tx, bool &writing) :
+		spi_(&spi), dc_(dc), rst_(rst), cs_(cs), spi_tx_(spi_tx), writing_(writing) {
+	tx_buf_ = malloc(BYTES);
 	responder_.attachImmediate(doneWriting);
 	responder_.setContext(this);
 }

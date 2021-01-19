@@ -25,24 +25,26 @@ class SSD1331 {
 		  	  	  int dc,
                    int rst,
 				   int cs,
-				   SPISettings spi_tx);
+				   SPISettings spi_tx,
+				   bool &writing);
 
   void begin();
 
   void setAddrWindow(uint16_t x, uint16_t y, uint16_t w,
                                        uint16_t h);
-  void write(const uint16_t* buf, size_t len=WIDTH*HEIGHT*2);
+  void write(const uint16_t* buf, size_t len=BYTES);
   void wait();
 
   static uint16_t Color565(uint8_t r, uint8_t g, uint8_t b);
 
   static const int16_t WIDTH = 96;
   static const int16_t HEIGHT = 64;
+  static const size_t BYTES = WIDTH * HEIGHT * 2;
 
  private:
 
 
-  uint8_t tx_buf_[WIDTH*HEIGHT*2];
+  uint8_t *tx_buf_;
 
   int dc_;
   int rst_;
@@ -53,5 +55,5 @@ class SSD1331 {
   EventResponder responder_;
   static void doneWriting(EventResponderRef responder);
 
-  volatile bool writing_ = false;
+  volatile bool &writing_;
 };
