@@ -26,7 +26,7 @@ class SSD1331 {
                    int rst,
 				   int cs,
 				   SPISettings spi_tx,
-				   bool &writing);
+				   volatile bool &writing);
 
   void begin();
 

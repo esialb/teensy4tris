@@ -7,7 +7,7 @@
 
 SPISettings spi_tx(75000000, MSBFIRST, SPI_MODE3);
 
-bool gfx_writing = false;
+volatile bool gfx_writing = false;
 
 SSD1331 gfx0(SPI1, 3, 4, 2, spi_tx, gfx_writing);
 SSD1331 gfx1(SPI1, 6, 7, 5, spi_tx, gfx_writing);

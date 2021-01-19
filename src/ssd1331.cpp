@@ -69,8 +69,9 @@
 void SSD1331::write(const uint16_t *buf, size_t len) {
 	while (writing_)
 		yield();
-	memcpy(tx_buf_, buf, len);
 	writing_ = true;
+	setAddrWindow(0, 0, WIDTH, HEIGHT);
+	memcpy(tx_buf_, buf, len);
 	digitalWrite(dc_, HIGH);
 	spi_->beginTransaction(spi_tx_);
 	digitalWrite(cs_, LOW);
@@ -196,13 +197,11 @@ void SSD1331::begin() {
 	spi_->transfer(0x7D);
 	spi_->transfer(SSD1331_CMD_DISPLAYON);  //--turn on oled panel
 	digitalWrite(cs_, HIGH);
-
-	setAddrWindow(0, 0, 96, 64);
 }
 
 /********************************* low level pin initialization */
 
-SSD1331::SSD1331(SPIClass &spi, int dc, int rst, int cs, SPISettings spi_tx, bool &writing) :
+SSD1331::SSD1331(SPIClass &spi, int dc, int rst, int cs, SPISettings spi_tx, volatile bool &writing) :
 		spi_(&spi), dc_(dc), rst_(rst), cs_(cs), spi_tx_(spi_tx), writing_(writing) {
 	tx_buf_ = malloc(BYTES);
 	responder_.attachImmediate(doneWriting);
