@@ -1,9 +1,9 @@
 [submodule "lib/teensy4_i2c"]
-	path = lib/teensy4_i2c
+	path = teensy4/lib/teensy4_i2c
 	url = https://github.com/Richard-Gemmell/teensy4_i2c.git
 [submodule "lib/Adafruit-GFX-Library"]
-	path = lib/Adafruit-GFX-Library
+	path = teensy4/lib/Adafruit-GFX-Library
 	url = https://github.com/adafruit/Adafruit-GFX-Library.git
 [submodule "lib/Adafruit_BusIO"]
-	path = lib/Adafruit_BusIO
+	path = teensy4/lib/Adafruit_BusIO
 	url = https://github.com/adafruit/Adafruit_BusIO.git
