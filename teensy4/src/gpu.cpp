@@ -19,8 +19,8 @@ DMAMEM std::map<int16_t, GPU::Sprite> GPU::sprites;
 std::map<int16_t, GPU::XYSprite> GPU::xy_sprites0;
 std::map<int16_t, GPU::XYSprite> GPU::xy_sprites1;
 
-SSD1331 GPU::gfx0(SPI1, 3, 4, 2, spi_tx, gfx_writing);
-SSD1331 GPU::gfx1(SPI1, 6, 7, 5, spi_tx, gfx_writing);
+SSD1331 GPU::gfx1(SPI1, 3, 4, 2, spi_tx, gfx_writing);
+SSD1331 GPU::gfx0(SPI1, 6, 7, 5, spi_tx, gfx_writing);
 
 GFXcanvas16 GPU::gfx0_buf(96, 64);
 GFXcanvas16 GPU::gfx1_buf(96, 64);
@@ -35,7 +35,7 @@ void GPU::begin() {
 
 void GPU::render() {
 	gfx0_buf.fillScreen(0);
-	gfx1_buf.fillScreen(65535);
+	gfx1_buf.fillScreen(0);
 	for (auto it = xy_sprites0.begin(); it != xy_sprites0.end(); ++it) {
 		auto &xy_sprite = it->second;
 		auto sprite_it = sprites.find(xy_sprite.sprite_id);

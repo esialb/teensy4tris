@@ -28,6 +28,7 @@ private:
 	};
 
 	static volatile State state;
+	static uint16_t i2c_receive_address;
 	static DMAMEM uint8_t i2c_receive_buf[256];
 	static uint8_t* spi_receive_buf;
 };

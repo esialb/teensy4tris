@@ -27,6 +27,7 @@ public:
 		int16_t width;
 		int16_t height;
 		uint16_t* data;
+		uint16_t* mask;
 	};
 
 	struct XYSprite {
@@ -48,8 +49,6 @@ public:
 
 	static void begin();
 	static void render();
-private:
-
 };
 
 #endif /* SRC_GFX_GPU_H_ */
