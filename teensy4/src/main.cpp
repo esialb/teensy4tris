@@ -19,15 +19,16 @@ int frames = 0;
 volatile bool rx_started = false;
 volatile bool rx_finished = false;
 
-DMAMEM uint8_t i2c_rx_buf[128];
+DMAMEM uint8_t i2c_rx_buf[256];
 size_t spi_rx_len;
-DMAMEM uint8_t spi_rx_buf[128];
+DMAMEM uint8_t spi_rx_buf[256];
+size_t spi_tx_len;
+DMAMEM uint8_t spi_tx_buf[256];
 
 void i2c_after_receive(size_t len, uint16_t address) {
 	rx_started = true;
 	spi_rx_len = i2c_rx_buf[0];
-	LPSPI4_TDR = (uint8_t) spi_rx_len;
-	SPISlave::set_rx(spi_rx_buf, spi_rx_len);
+	SPISlave::rx(spi_rx_buf, spi_rx_len);
 }
 
 void spi_after_receive(uint8_t* buf, size_t len) {
@@ -40,7 +41,7 @@ void setup() {
 	Slave.after_receive(i2c_after_receive);
 
 	SPISlave::begin();
-	SPISlave::set_isr(spi_after_receive);
+	SPISlave::rx_isr(spi_after_receive);
 
 	SPI1.begin();
 	gfx0.begin();
@@ -77,5 +78,8 @@ void loop() {
 		gfx0.write(gfx_buf.getBuffer());
 		gfx1.write(gfx_buf.getBuffer());
 		rx_finished = false;
+		memcpy(spi_tx_buf, spi_rx_buf, spi_rx_len);
+		spi_tx_len = spi_rx_len;
+		SPISlave::tx(spi_tx_buf, spi_tx_len);
 	}
 }
