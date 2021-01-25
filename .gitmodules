@@ -7,3 +7,6 @@
 [submodule "lib/Adafruit_BusIO"]
 	path = teensy4/lib/Adafruit_BusIO
 	url = https://github.com/adafruit/Adafruit_BusIO.git
+[submodule "teensy4/lib/TeensyThreads"]
+	path = teensy4/lib/TeensyThreads
+	url = https://github.com/ftrias/TeensyThreads

@@ -5,14 +5,18 @@
 #include <spi_slave.h>
 #include <SPI.h>
 #include "ssd1331.h"
+#include "gpu.h"
 #include "gpu_slave.h"
 
 void setup() {
+	GPU::begin();
 	GPUSlave::begin();
+	GPU::should_render = true;
 }
 
 void loop() {
 	yield();
+	GPU::render();
 }
 
 /*

@@ -23,8 +23,7 @@ private:
 	static void spi_after_receive(uint8_t* buf, size_t len);
 	static void spi_after_transmit(uint8_t* buf, size_t len);
 
-	static uint8_t i2c_receive_buf[256];
-	static uint8_t i2c_transmit_buf[256];
+	static int16_t i2c_receive_buf[256];
 };
 
 #endif /* SRC_IO_GPU_SLAVE_H_ */
