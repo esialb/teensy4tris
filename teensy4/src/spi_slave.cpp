@@ -5,12 +5,12 @@
 #include <SPI.h>
 
 DMAChannel SPISlave::_rx(false);
-uint8_t *SPISlave::_rx_buf = nullptr;
+uint8_t * SPISlave::_rx_buf = nullptr;
 size_t SPISlave::_rx_len = 0;
 void (*SPISlave::_rx_callback)(uint8_t* buf, size_t len) = nullptr;
 
 DMAChannel SPISlave::_tx(false);
-uint8_t *SPISlave::_tx_buf = nullptr;
+uint8_t * SPISlave::_tx_buf = nullptr;
 size_t SPISlave::_tx_len = 0;
 void (*SPISlave::_tx_callback)(uint8_t* buf, size_t len) = nullptr;
 
@@ -45,7 +45,7 @@ void SPISlave::cancel_rx() {
 
 void SPISlave::rx_isr() {
 	_rx.clearInterrupt();
-	asm volatile ("dsb");
+	asm ("dsb");
 	arm_dcache_delete(_rx_buf, _rx_len);
 	if (_rx_callback)
 		_rx_callback(_rx_buf, _rx_len);
@@ -67,7 +67,7 @@ void SPISlave::cancel_tx() {
 
 void SPISlave::tx_isr() {
 	_tx.clearInterrupt();
-	asm volatile ("dsb");
+	asm ("dsb");
 	arm_dcache_delete(_tx_buf, _tx_len);
 	if (_tx_callback)
 		_tx_callback(_tx_buf, _tx_len);

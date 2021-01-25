@@ -10,6 +10,7 @@
 
 #include <avr/pgmspace.h>
 #include <TeensyThreads.h>
+#include "gpu_slave.h"
 
 SPISettings spi_tx(64000000, MSBFIRST, SPI_MODE3);
 volatile bool gfx_writing = false;
@@ -27,32 +28,34 @@ GFXcanvas16 GPU::gfx1_buf(96, 64);
 void GPU::begin() {
 	SPI1.begin();
 	gfx0.begin();
-	gfx0.write(gfx0_buf.getBuffer());
 	gfx1.begin();
+	gfx0_buf.setRotation(2);
+	gfx1_buf.setRotation(2);
+	gfx0.write(gfx0_buf.getBuffer());
 	gfx1.write(gfx1_buf.getBuffer());
 }
 
 void GPU::render() {
 	gfx0_buf.fillScreen(0);
-//	gfx1_buf.fillScreen(0);
-		for (auto it = xy_sprites0.begin(); it != xy_sprites0.end(); ++it) {
-			auto &xy_sprite = it->second;
-			auto sprite_it = sprites.find(xy_sprite.sprite_id);
-			if (sprite_it == sprites.end())
-				continue;
-			auto &sprite = sprite_it->second;
-			gfx0_buf.drawRGBBitmap(xy_sprite.x, xy_sprite.y, sprite.data,
-					sprite.width, sprite.height);
-		}
-//		for (auto it = xy_sprites1.begin(); it != xy_sprites1.end(); ++it) {
-//			auto sprite_it = sprites.find(it->second.sprite_id);
-//			if (sprite_it == sprites.end())
-//				continue;
-//			auto &xy_sprite = it->second;
-//			auto &sprite = sprite_it->second;
-//			gfx1_buf.drawRGBBitmap(xy_sprite.x, xy_sprite.y, sprite.data,
-//					sprite.width, sprite.height);
-//		}
+	gfx1_buf.fillScreen(0);
+	for (auto it = xy_sprites0.begin(); it != xy_sprites0.end(); ++it) {
+		auto &xy_sprite = it->second;
+		auto sprite_it = sprites.find(xy_sprite.sprite_id);
+		if (sprite_it == sprites.end())
+			continue;
+		auto &sprite = sprite_it->second;
+		gfx0_buf.drawRGBBitmap(xy_sprite.x, xy_sprite.y, sprite.data,
+				sprite.width, sprite.height);
+	}
+	for (auto it = xy_sprites1.begin(); it != xy_sprites1.end(); ++it) {
+		auto &xy_sprite = it->second;
+		auto sprite_it = sprites.find(xy_sprite.sprite_id);
+		if (sprite_it == sprites.end())
+			continue;
+		auto &sprite = sprite_it->second;
+		gfx1_buf.drawRGBBitmap(xy_sprite.x, xy_sprite.y, sprite.data,
+				sprite.width, sprite.height);
+	}
 	gfx0.write(gfx0_buf.getBuffer());
 	gfx1.write(gfx1_buf.getBuffer());
 }

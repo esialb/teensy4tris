@@ -31,12 +31,12 @@ private:
 	static void tx_isr();
 
 	static DMAChannel _rx;
-	static uint8_t *_rx_buf;
+	static uint8_t * _rx_buf;
 	static size_t _rx_len;
 	static void (*_rx_callback)(uint8_t* buf, size_t len);
 
 	static DMAChannel _tx;
-	static uint8_t *_tx_buf;
+	static uint8_t * _tx_buf;
 	static size_t _tx_len;
 	static void (*_tx_callback)(uint8_t* buf, size_t len);
 };

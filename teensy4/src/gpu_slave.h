@@ -19,10 +19,7 @@ public:
 
 private:
 	static void i2c_after_receive(size_t len, uint16_t address);
-	static void i2c_before_transmit(uint16_t address);
-	static void i2c_after_transmit(uint16_t address);
 	static void spi_after_receive(uint8_t* buf, size_t len);
-	static void spi_after_transmit(uint8_t* buf, size_t len);
 
 	enum State {
 		CMD_I2C_WAIT,
@@ -31,8 +28,7 @@ private:
 	};
 
 	static volatile State state;
-
-	static int16_t i2c_receive_buf[256];
+	static DMAMEM uint8_t i2c_receive_buf[256];
 };
 
 #endif /* SRC_IO_GPU_SLAVE_H_ */

@@ -9,8 +9,8 @@
 #include "gpu_slave.h"
 
 void setup() {
-	GPU::begin();
 	GPUSlave::begin();
+	GPU::begin();
 }
 
 void loop() {

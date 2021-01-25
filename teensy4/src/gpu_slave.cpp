@@ -15,22 +15,18 @@
 #include "gpu.h"
 #include <TeensyThreads.h>
 
-DMAMEM int16_t GPUSlave::i2c_receive_buf[256];
+GPUSlave::State volatile GPUSlave::state = GPUSlave::CMD_I2C_WAIT;
+DMAMEM uint8_t GPUSlave::i2c_receive_buf[256];
 
 IMX_RT1060_I2CSlave &I2C_Slave = ::Slave;
 
-volatile GPUSlave::State GPUSlave::state = GPUSlave::CMD_I2C_WAIT;
-
 void GPUSlave::begin() {
 	I2C_Slave.listen_range(0x60, 0x62);
-	I2C_Slave.set_receive_buffer((uint8_t*)i2c_receive_buf, sizeof(i2c_receive_buf));
+	I2C_Slave.set_receive_buffer(i2c_receive_buf, sizeof(i2c_receive_buf));
 	I2C_Slave.after_receive(i2c_after_receive);
-	I2C_Slave.before_transmit(i2c_before_transmit);
-	I2C_Slave.after_transmit(i2c_after_transmit);
 
 	SPISlave::begin();
 	SPISlave::set_rx_callback(spi_after_receive);
-	SPISlave::set_tx_callback(spi_after_transmit);
 }
 
 void GPUSlave::tick() {
@@ -60,9 +56,8 @@ void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
 			sprite.id = id;
 			sprite.width = width;
 			sprite.height = height;
-			size_t len = 2 * width * height;
-			sprite.data = malloc(len);
-			SPISlave::rx((uint8_t*)sprite.data, len);
+			sprite.data = (uint16_t*) malloc(len);
+			SPISlave::rx((uint8_t*)sprite.data, 2 * width * height);
 			state = State::CMD_SPI_WAIT;
 		} else {
 			state = State::CMD_READY;
@@ -102,19 +97,8 @@ void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
 	}
 }
 
-void GPUSlave::i2c_before_transmit(uint16_t address) {
-}
-
-void GPUSlave::i2c_after_transmit(uint16_t address) {
-
-}
-
 void GPUSlave::spi_after_receive(uint8_t *buf, size_t len) {
 	if (state != State::CMD_SPI_WAIT) return;
 	state = State::CMD_READY;
-}
-
-void GPUSlave::spi_after_transmit(uint8_t *buf, size_t len) {
-
 }
 
