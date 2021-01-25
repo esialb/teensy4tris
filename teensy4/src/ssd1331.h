@@ -14,6 +14,9 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
+#ifndef SRC_IO_SSD1331_H_
+#define SRC_IO_SSD1331_H_
+
 #include <Adafruit_GFX.h>
 
 #include <EventResponder.h>
@@ -57,3 +60,5 @@ class SSD1331 {
 
   volatile bool &writing_;
 };
+
+#endif

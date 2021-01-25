@@ -2,15 +2,24 @@
 #include <i2c_driver.h>
 #include <imx_rt1060/imx_rt1060_i2c_driver.h>
 #include <Adafruit_GFX.h>
+#include <spi_slave.h>
 #include <SPI.h>
 #include "ssd1331.h"
-#include "spi_slave.h"
+#include "gpu_slave.h"
 
+void setup() {
+	GPUSlave::begin();
+}
+
+void loop() {
+	yield();
+}
+
+/*
 SPISettings spi_tx(64000000, MSBFIRST, SPI_MODE3);
-
 volatile bool gfx_writing = false;
-SSD1331 gfx0(SPI1, 3, 4, 2, spi_tx, gfx_writing);
-SSD1331 gfx1(SPI1, 6, 7, 5, spi_tx, gfx_writing);
+io::SSD1331 gfx0(SPI1, 3, 4, 2, spi_tx, gfx_writing);
+io::SSD1331 gfx1(SPI1, 6, 7, 5, spi_tx, gfx_writing);
 
 GFXcanvas16 gfx_buf(96, 64);
 
@@ -28,7 +37,7 @@ DMAMEM uint8_t spi_tx_buf[256];
 void i2c_after_receive(size_t len, uint16_t address) {
 	rx_started = true;
 	spi_rx_len = i2c_rx_buf[0];
-	SPI_Slave::rx(spi_rx_buf, spi_rx_len);
+	io::SPI_Slave::rx(spi_rx_buf, spi_rx_len);
 }
 
 void spi_after_receive(uint8_t* buf, size_t len) {
@@ -36,18 +45,18 @@ void spi_after_receive(uint8_t* buf, size_t len) {
 }
 
 void setup() {
-	Slave.listen_range(0x60, 0x60);
+	Slave.listen_range(0x60, 0x63);
 	Slave.set_receive_buffer(i2c_rx_buf, sizeof(i2c_rx_buf));
 	Slave.after_receive(i2c_after_receive);
 
-	SPI_Slave::begin();
-	SPI_Slave::set_rx_isr(spi_after_receive);
+	io::SPI_Slave::begin();
+	io::SPI_Slave::set_rx_callback(spi_after_receive);
 
 	SPI1.begin();
 	gfx0.begin();
 	gfx1.begin();
 
-	gfx_buf.setTextColor(SSD1331::Color565(255, 255, 255));
+	gfx_buf.setTextColor(io::SSD1331::Color565(255, 255, 255));
 	gfx_buf.setRotation(2);
 	gfx_buf.fillScreen(0);
 	gfx_buf.setCursor(0, 0);
@@ -80,6 +89,7 @@ void loop() {
 		rx_finished = false;
 		memcpy(spi_tx_buf, spi_rx_buf, spi_rx_len);
 		spi_tx_len = spi_rx_len;
-		SPI_Slave::tx(spi_tx_buf, spi_tx_len);
+		io::SPI_Slave::tx(spi_tx_buf, spi_tx_len);
 	}
 }
+ */
