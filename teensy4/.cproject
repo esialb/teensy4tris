@@ -15,16 +15,23 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="teensy4-ssd1331-gpu" buildProperties="" description="" id="0.910961921" name="Default" parent="org.eclipse.cdt.build.core.prefbase.cfg">
+				<configuration artifactName="teensy4" buildProperties="" description="" id="0.910961921" name="Default" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=" parent="org.eclipse.cdt.build.core.prefbase.cfg">
 					<folderInfo id="0.910961921." name="/" resourcePath="">
 						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.952979152" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="org.eclipse.cdt.build.core.prefbase.toolchain.952979152.52310970" name=""/>
 							<builder arguments="-f -c eclipse" cleanBuildTarget="run --target clean" command="platformio" id="org.eclipse.cdt.build.core.settings.default.builder.1519453406" incrementalBuildTarget="run" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.1409095472" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1624502120" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.239157887" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/include"/>
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/src"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.incpaths.239157887" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit-GFX-Library"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit_BusIO"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/cores/teensy4"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ADC"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src"/>
@@ -91,7 +98,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD/utility"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash"/>
@@ -115,8 +121,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/UTFT"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/VirtualWire"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/WS2812Serial"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XBee"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XPT2046_Touchscreen"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/i2c_t3"/>
@@ -124,11 +128,12 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ssd1351"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/x10"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/tool-unity"/>
+									<listOptionValue builtIn="false" value="/home/robin/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include"/>
 								</option>
-								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.922107295" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.symbols.922107295" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="PLATFORMIO=50003"/>
 									<listOptionValue builtIn="false" value="__IMXRT1062__"/>
-									<listOptionValue builtIn="false" value="ARDUINO_TEENSY40"/>
+									<listOptionValue builtIn="false" value="ARDUINO_TEENSY41"/>
 									<listOptionValue builtIn="false" value="USB_SERIAL"/>
 									<listOptionValue builtIn="false" value="ARDUINO=10805"/>
 									<listOptionValue builtIn="false" value="TEENSYDUINO=153"/>
@@ -139,9 +144,16 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.149990277" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.54121539" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1096940598" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/include"/>
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/src"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.incpaths.1096940598" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit-GFX-Library"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit_BusIO"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/cores/teensy4"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ADC"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src"/>
@@ -208,7 +220,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD/utility"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash"/>
@@ -232,8 +243,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/UTFT"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/VirtualWire"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/WS2812Serial"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XBee"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XPT2046_Touchscreen"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/i2c_t3"/>
@@ -241,11 +250,12 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ssd1351"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/x10"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/tool-unity"/>
+									<listOptionValue builtIn="false" value="/home/robin/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include"/>
 								</option>
-								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.1198905600" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.symbols.1198905600" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="PLATFORMIO=50003"/>
 									<listOptionValue builtIn="false" value="__IMXRT1062__"/>
-									<listOptionValue builtIn="false" value="ARDUINO_TEENSY40"/>
+									<listOptionValue builtIn="false" value="ARDUINO_TEENSY41"/>
 									<listOptionValue builtIn="false" value="USB_SERIAL"/>
 									<listOptionValue builtIn="false" value="ARDUINO=10805"/>
 									<listOptionValue builtIn="false" value="TEENSYDUINO=153"/>
@@ -256,9 +266,16 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.762536863" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1310559623" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.41298875" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/include"/>
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/src"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.incpaths.41298875" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit-GFX-Library"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit_BusIO"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/cores/teensy4"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ADC"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src"/>
@@ -325,7 +342,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD/utility"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash"/>
@@ -349,8 +365,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/UTFT"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/VirtualWire"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/WS2812Serial"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XBee"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XPT2046_Touchscreen"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/i2c_t3"/>
@@ -358,11 +372,12 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ssd1351"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/x10"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/tool-unity"/>
+									<listOptionValue builtIn="false" value="&quot;${HOME}/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include&quot;"/>
 								</option>
-								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.884639970" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.symbols.884639970" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="PLATFORMIO=50003"/>
 									<listOptionValue builtIn="false" value="__IMXRT1062__"/>
-									<listOptionValue builtIn="false" value="ARDUINO_TEENSY40"/>
+									<listOptionValue builtIn="false" value="ARDUINO_TEENSY41"/>
 									<listOptionValue builtIn="false" value="USB_SERIAL"/>
 									<listOptionValue builtIn="false" value="ARDUINO=10805"/>
 									<listOptionValue builtIn="false" value="TEENSYDUINO=153"/>
@@ -392,16 +407,23 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="mbed" buildProperties="" description="" id="0.910961921.1363900502" name="Debug" parent="org.eclipse.cdt.build.core.prefbase.cfg">
+				<configuration artifactName="mbed" buildProperties="" description="" id="0.910961921.1363900502" name="Debug" optionalBuildProperties="" parent="org.eclipse.cdt.build.core.prefbase.cfg">
 					<folderInfo id="0.910961921.1363900502." name="/" resourcePath="">
 						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.2116690625" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="org.eclipse.cdt.build.core.prefbase.toolchain.2116690625.848954921" name=""/>
 							<builder arguments="-f -c eclipse debug" cleanBuildTarget="run --target clean" command="platformio" enableCleanBuild="false" id="org.eclipse.cdt.build.core.settings.default.builder.985867833" incrementalBuildTarget="" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.1855678035" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.30528994" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.794801023" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/include"/>
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/src"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.incpaths.794801023" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit-GFX-Library"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit_BusIO"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/cores/teensy4"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ADC"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src"/>
@@ -468,7 +490,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD/utility"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash"/>
@@ -492,8 +513,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/UTFT"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/VirtualWire"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/WS2812Serial"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XBee"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XPT2046_Touchscreen"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/i2c_t3"/>
@@ -501,11 +520,12 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ssd1351"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/x10"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/tool-unity"/>
+									<listOptionValue builtIn="false" value="/home/robin/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include"/>
 								</option>
-								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.1743427839" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.symbols.1743427839" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="PLATFORMIO=50003"/>
 									<listOptionValue builtIn="false" value="__IMXRT1062__"/>
-									<listOptionValue builtIn="false" value="ARDUINO_TEENSY40"/>
+									<listOptionValue builtIn="false" value="ARDUINO_TEENSY41"/>
 									<listOptionValue builtIn="false" value="USB_SERIAL"/>
 									<listOptionValue builtIn="false" value="ARDUINO=10805"/>
 									<listOptionValue builtIn="false" value="TEENSYDUINO=153"/>
@@ -516,9 +536,16 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.919136836" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1146422798" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.650084869" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/include"/>
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/src"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.incpaths.650084869" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit-GFX-Library"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit_BusIO"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/cores/teensy4"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ADC"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src"/>
@@ -585,7 +612,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD/utility"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash"/>
@@ -609,8 +635,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/UTFT"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/VirtualWire"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/WS2812Serial"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XBee"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XPT2046_Touchscreen"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/i2c_t3"/>
@@ -618,11 +642,12 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ssd1351"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/x10"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/tool-unity"/>
+									<listOptionValue builtIn="false" value="/home/robin/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include"/>
 								</option>
-								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.2055633423" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.symbols.2055633423" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="PLATFORMIO=50003"/>
 									<listOptionValue builtIn="false" value="__IMXRT1062__"/>
-									<listOptionValue builtIn="false" value="ARDUINO_TEENSY40"/>
+									<listOptionValue builtIn="false" value="ARDUINO_TEENSY41"/>
 									<listOptionValue builtIn="false" value="USB_SERIAL"/>
 									<listOptionValue builtIn="false" value="ARDUINO=10805"/>
 									<listOptionValue builtIn="false" value="TEENSYDUINO=153"/>
@@ -633,9 +658,16 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.445650141" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1637357529" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1246337321" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/include"/>
-									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/src"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.incpaths.1246337321" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/include"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/teensy4_i2c/src"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit-GFX-Library"/>
+									<listOptionValue builtIn="false" value="${HOME}/workspaces/teensy4/repos/teensy4-ssd1331-gpu/teensy4/lib/Adafruit_BusIO"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
+									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/cores/teensy4"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ADC"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src"/>
@@ -702,7 +734,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ResponsiveAnalogRead/src"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SD/utility"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPI"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SPIFlash"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash"/>
@@ -726,8 +757,6 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/UTFT"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/VirtualWire"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/WS2812Serial"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire"/>
-									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XBee"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/XPT2046_Touchscreen"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/i2c_t3"/>
@@ -735,11 +764,12 @@
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/ssd1351"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/framework-arduinoteensy/libraries/x10"/>
 									<listOptionValue builtIn="false" value="${HOME}/.platformio/packages/tool-unity"/>
+									<listOptionValue builtIn="false" value="/home/robin/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include"/>
 								</option>
-								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.2122043341" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="org.eclipse.cdt.build.core.settings.holder.symbols.2122043341" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="PLATFORMIO=50003"/>
 									<listOptionValue builtIn="false" value="__IMXRT1062__"/>
-									<listOptionValue builtIn="false" value="ARDUINO_TEENSY40"/>
+									<listOptionValue builtIn="false" value="ARDUINO_TEENSY41"/>
 									<listOptionValue builtIn="false" value="USB_SERIAL"/>
 									<listOptionValue builtIn="false" value="ARDUINO=10805"/>
 									<listOptionValue builtIn="false" value="TEENSYDUINO=153"/>
@@ -759,17 +789,12 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="teensy4-ssd1331-gpu.null.189551033" name="teensy4-ssd1331-gpu"/>
 	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="0.910961921">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Default">
 			<resource resourceType="PROJECT" workspacePath="/teensy40"/>
 		</configuration>
+		<configuration configurationName="Debug"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
@@ -887,5 +912,14 @@
 				<runAllBuilders>false</runAllBuilders>
 			</target>
 		</buildTargets>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="0.910961921.1363900502">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="0.910961921">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
 </cproject>
