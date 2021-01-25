@@ -28,7 +28,7 @@ DMAMEM uint8_t spi_tx_buf[256];
 void i2c_after_receive(size_t len, uint16_t address) {
 	rx_started = true;
 	spi_rx_len = i2c_rx_buf[0];
-	SPISlave::rx(spi_rx_buf, spi_rx_len);
+	SPI_Slave::rx(spi_rx_buf, spi_rx_len);
 }
 
 void spi_after_receive(uint8_t* buf, size_t len) {
@@ -40,8 +40,8 @@ void setup() {
 	Slave.set_receive_buffer(i2c_rx_buf, sizeof(i2c_rx_buf));
 	Slave.after_receive(i2c_after_receive);
 
-	SPISlave::begin();
-	SPISlave::rx_isr(spi_after_receive);
+	SPI_Slave::begin();
+	SPI_Slave::set_rx_isr(spi_after_receive);
 
 	SPI1.begin();
 	gfx0.begin();
@@ -80,6 +80,6 @@ void loop() {
 		rx_finished = false;
 		memcpy(spi_tx_buf, spi_rx_buf, spi_rx_len);
 		spi_tx_len = spi_rx_len;
-		SPISlave::tx(spi_tx_buf, spi_tx_len);
+		SPI_Slave::tx(spi_tx_buf, spi_tx_len);
 	}
 }

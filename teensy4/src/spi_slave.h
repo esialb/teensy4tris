@@ -12,14 +12,14 @@
 #include <stdint.h>
 #include <DMAChannel.h>
 
-class SPISlave {
+class SPI_Slave {
 public:
-	SPISlave() = delete;
+	SPI_Slave() = delete;
 	static void begin();
 	static void rx(uint8_t* buf, size_t len);
-	static void rx_isr(void (*isr)(uint8_t* buf, size_t len));
+	static void set_rx_isr(void (*isr)(uint8_t* buf, size_t len));
 	static void tx(uint8_t* buf, size_t len);
-	static void tx_isr(void (*isr)(uint8_t* buf, size_t len));
+	static void set_tx_isr(void (*isr)(uint8_t* buf, size_t len));
 private:
 	static void rx_isr();
 	static void tx_isr();
