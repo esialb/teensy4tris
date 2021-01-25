@@ -11,12 +11,11 @@
 void setup() {
 	GPU::begin();
 	GPUSlave::begin();
-	GPU::should_render = true;
 }
 
 void loop() {
 	yield();
-	GPU::render();
+	GPUSlave::tick();
 }
 
 /*

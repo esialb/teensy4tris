@@ -15,6 +15,7 @@
 class GPUSlave {
 public:
 	static void begin();
+	static void tick();
 
 private:
 	static void i2c_after_receive(size_t len, uint16_t address);
@@ -22,6 +23,14 @@ private:
 	static void i2c_after_transmit(uint16_t address);
 	static void spi_after_receive(uint8_t* buf, size_t len);
 	static void spi_after_transmit(uint8_t* buf, size_t len);
+
+	enum State {
+		CMD_I2C_WAIT,
+		CMD_SPI_WAIT,
+		CMD_READY,
+	};
+
+	static volatile State state;
 
 	static int16_t i2c_receive_buf[256];
 };

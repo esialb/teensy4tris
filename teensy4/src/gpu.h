@@ -46,12 +46,8 @@ public:
 	static GFXcanvas16 gfx0_buf;
 	static GFXcanvas16 gfx1_buf;
 
-	static volatile bool should_render;
-
 	static void begin();
 	static void render();
-
-	static Threads::Mutex mutex;
 private:
 
 };

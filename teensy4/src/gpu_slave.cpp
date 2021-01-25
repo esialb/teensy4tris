@@ -19,6 +19,7 @@ DMAMEM int16_t GPUSlave::i2c_receive_buf[256];
 
 IMX_RT1060_I2CSlave &I2C_Slave = ::Slave;
 
+volatile GPUSlave::State GPUSlave::state = GPUSlave::CMD_I2C_WAIT;
 
 void GPUSlave::begin() {
 	I2C_Slave.listen_range(0x60, 0x62);
@@ -32,17 +33,17 @@ void GPUSlave::begin() {
 	SPISlave::set_tx_callback(spi_after_transmit);
 }
 
-void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
-	{
-		Threads::Scope(GPU::mutex);
-		GPU::gfx1_buf.fillScreen(0);
-		GPU::gfx1_buf.setTextColor(255);
-		GPU::gfx1_buf.setCursor(0, 0);
-		GPU::gfx1_buf.print(len);
-		GPU::should_render = true;
+void GPUSlave::tick() {
+	if (state == State::CMD_READY) {
+		GPU::render();
+		state = State::CMD_I2C_WAIT;
 	}
+}
+
+void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
+	if (state != State::CMD_I2C_WAIT) return;
+
 	if (address == 0x60 && len == 6) {
-		Threads::Scope lock(GPU::mutex);
 		int16_t *buf = (int16_t*) i2c_receive_buf;
 		int16_t id = buf[0];
 		int16_t width = buf[1];
@@ -62,11 +63,11 @@ void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
 			size_t len = 2 * width * height;
 			sprite.data = malloc(len);
 			SPISlave::rx((uint8_t*)sprite.data, len);
+			state = State::CMD_SPI_WAIT;
 		} else {
-			GPU::should_render = true;
+			state = State::CMD_READY;
 		}
 	} else if(address == 0x61 && len == 8) {
-		Threads::Scope lock(GPU::mutex);
 		int16_t *buf = (int16_t*) i2c_receive_buf;
 		int16_t id = buf[0];
 		int16_t sprite_id = buf[1];
@@ -81,9 +82,8 @@ void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
 			xy_sprite.x = x;
 			xy_sprite.y = y;
 		}
-		GPU::should_render = true;
+		state = State::CMD_READY;
 	} else if(address == 0x62 && len == 8) {
-		Threads::Scope lock(GPU::mutex);
 		int16_t *buf = (int16_t*) i2c_receive_buf;
 		int16_t id = buf[0];
 		int16_t sprite_id = buf[1];
@@ -98,7 +98,7 @@ void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
 			xy_sprite.x = x;
 			xy_sprite.y = y;
 		}
-		GPU::should_render = true;
+		state = State::CMD_READY;
 	}
 }
 
@@ -110,7 +110,8 @@ void GPUSlave::i2c_after_transmit(uint16_t address) {
 }
 
 void GPUSlave::spi_after_receive(uint8_t *buf, size_t len) {
-	GPU::should_render = true;
+	if (state != State::CMD_SPI_WAIT) return;
+	state = State::CMD_READY;
 }
 
 void GPUSlave::spi_after_transmit(uint8_t *buf, size_t len) {
