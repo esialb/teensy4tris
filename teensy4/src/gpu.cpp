@@ -29,15 +29,13 @@ void GPU::begin() {
 	SPI1.begin();
 	gfx0.begin();
 	gfx1.begin();
-	gfx0_buf.setRotation(2);
-	gfx1_buf.setRotation(2);
 	gfx0.write(gfx0_buf.getBuffer());
 	gfx1.write(gfx1_buf.getBuffer());
 }
 
 void GPU::render() {
 	gfx0_buf.fillScreen(0);
-	gfx1_buf.fillScreen(0);
+	gfx1_buf.fillScreen(65535);
 	for (auto it = xy_sprites0.begin(); it != xy_sprites0.end(); ++it) {
 		auto &xy_sprite = it->second;
 		auto sprite_it = sprites.find(xy_sprite.sprite_id);

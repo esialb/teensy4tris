@@ -11,6 +11,7 @@
 void setup() {
 	GPUSlave::begin();
 	GPU::begin();
+	GPU::render();
 }
 
 void loop() {

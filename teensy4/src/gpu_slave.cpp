@@ -17,6 +17,7 @@
 
 GPUSlave::State volatile GPUSlave::state = GPUSlave::CMD_I2C_WAIT;
 DMAMEM uint8_t GPUSlave::i2c_receive_buf[256];
+uint8_t *GPUSlave::spi_receive_buf = nullptr;
 
 IMX_RT1060_I2CSlave &I2C_Slave = ::Slave;
 
@@ -48,16 +49,13 @@ void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
 		auto it = GPU::sprites.find(id);
 		if (it != GPU::sprites.end()) {
 			free(it->second.data);
+			GPU::sprites.erase(id);
 		}
-		GPU::sprites.erase(it, GPU::sprites.end());
 
 		if (id != 0 && width != 0 && height != 0) {
-			GPU::Sprite& sprite = GPU::sprites[id];
-			sprite.id = id;
-			sprite.width = width;
-			sprite.height = height;
-			sprite.data = (uint16_t*) malloc(len);
-			SPISlave::rx((uint8_t*)sprite.data, 2 * width * height);
+			size_t datalen = sizeof(uint16_t) * width * height;
+			spi_receive_buf = (uint8_t*) malloc(datalen);
+			SPISlave::rx(spi_receive_buf, datalen);
 			state = State::CMD_SPI_WAIT;
 		} else {
 			state = State::CMD_READY;
@@ -97,8 +95,20 @@ void GPUSlave::i2c_after_receive(size_t len, uint16_t address) {
 	}
 }
 
-void GPUSlave::spi_after_receive(uint8_t *buf, size_t len) {
+void GPUSlave::spi_after_receive(uint8_t *spi_buf, size_t len) {
 	if (state != State::CMD_SPI_WAIT) return;
+	int16_t *i2c_buf = (int16_t*) i2c_receive_buf;
+	int16_t id = i2c_buf[0];
+	int16_t width = i2c_buf[1];
+	int16_t height = i2c_buf[2];
+
+	GPU::Sprite& sprite = GPU::sprites[id];
+	sprite.id = id;
+	sprite.width = width;
+	sprite.height = height;
+	sprite.data = (uint16_t*) spi_receive_buf;
+
+	spi_receive_buf = nullptr;
 	state = State::CMD_READY;
 }
 
